@@ -7,28 +7,24 @@ import { faXmarkCircle, faSpinner, faMagnifyingGlass } from '@fortawesome/free-s
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 
-const cx = classNames.bind(styles); 
+const cx = classNames.bind(styles);
 
 function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div>
-                    <img src={images.logo} alt="logo"/>
-                </div>
+                <img src={images.logo} alt="logo" />
                 <div className={cx('search')}>
-                    <input type="text" name="input" placeholder='Search account and videos' spellCheck={false}/>
+                    <input type="text" name="input" placeholder="Search account and videos" spellCheck={false} />
                     <button type="button" className={cx('clear-btn')}>
-                        <FontAwesomeIcon icon={faXmarkCircle}/>
+                        <FontAwesomeIcon icon={faXmarkCircle} />
                     </button>
-                    <FontAwesomeIcon icon={faSpinner} className={cx('loading')}/>
+                    <FontAwesomeIcon icon={faSpinner} className={cx('loading')} />
                     <button type="button" className={cx('search-btn')}>
-                        <FontAwesomeIcon icon={faMagnifyingGlass}/>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
                 </div>
-                <div className={cx('actions')}>
-                    
-                </div>
+                <div className={cx('actions')}></div>
             </div>
         </header>
     );

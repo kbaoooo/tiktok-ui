@@ -7,9 +7,11 @@ import styles from'./Menu.module.scss';
 
 const cx = classNames.bind(styles);
 
-function MenuItems({data}) {
+function MenuItems({data, onClick}) {
     return (
-        <Button className={cx('menu-items')} leftIcon={data.icon} to={data.to}>{data.title}</Button>
+        <Button className={cx('menu-items')} leftIcon={data.icon} to={data.to} onClick={onClick}>
+            {(data.code) ? (`${data.title} (${data.code})`) : data.title}
+        </Button>
     );
 }
 

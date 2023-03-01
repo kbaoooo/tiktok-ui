@@ -39,12 +39,12 @@ function Button({
         Component = 'a';
     }
 
-    if(disabled) {
+    if (disabled) {
         Object.keys(props).forEach((key) => {
-            if(key.startsWith('on') && typeof props[key] === 'function') {
+            if (key.startsWith('on') && typeof props[key] === 'function') {
                 delete props[key];
             }
-        })
+        });
     }
 
     const classes = cx('wrapper', {

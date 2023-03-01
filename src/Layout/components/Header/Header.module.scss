@@ -12,6 +12,7 @@
 }
 
 .inner {
+    padding : 0 var(--default-layout-horizonetal-space);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -101,5 +102,6 @@
     font-size: 2rem;
     margin-left: 28px;
     background: transparent;
+    cursor: pointer;
 }
 

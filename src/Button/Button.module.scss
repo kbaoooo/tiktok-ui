@@ -10,9 +10,6 @@
     background-color: #fff;
     border: 1px solid transparent;
     justify-content: center;
-    + .wrapper {
-        margin-left: 8px; 
-    }
 
     &.disabled {
         pointer-events: none;

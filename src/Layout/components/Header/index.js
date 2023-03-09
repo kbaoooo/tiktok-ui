@@ -9,7 +9,6 @@ import {
     faGlobe,
     faCircleQuestion,
     faKeyboard,
-    faCloudUpload,
     faCoins,
     faGear,
     faUser,
@@ -27,6 +26,8 @@ import { Wrapper as PopperWrapper } from '~/Popper';
 import AccountItem from '~/AccountItem';
 import Button from '~/Button';
 import Menu from '~/Popper/Menu';
+import { MessageIcon, UploadIcon } from '~/Icons';
+import Image from '~/images';
 
 const cx = classNames.bind(styles);
 
@@ -105,7 +106,7 @@ function Header() {
             <div className={cx('inner')}>
                 <img src={images.logo} alt="logo" />
 
-                <Tippy
+                <HeadlessTippy
                     interactive
                     // visible={SearchResult.length > 0}
                     render={(attrs) => {
@@ -132,17 +133,28 @@ function Header() {
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
-                </Tippy>
+                </HeadlessTippy>
 
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
                             <Tippy 
+                                delay={[0, 200]}
                                 content='Upload Video'
                                 placement='bottom'
                             >
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <UploadIcon/>
+                                </button>
+                            </Tippy>
+
+                            <Tippy 
+                                delay={[0, 200]}
+                                content='Message'
+                                placement='bottom'
+                            >
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon/>
                                 </button>
                             </Tippy>
                         </>
@@ -154,10 +166,11 @@ function Header() {
                     )}
                     <Menu items={MENU_ITEMS ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 src="https://b.fssta.com/uploads/application/soccer/headshots/713.vresize.350.350.medium.34.png"
                                 alt=""
                                 className={cx('user-avatar')}
+                                fallBack
                             />
                         ) : (
                             <button className={cx('more-btn')}>

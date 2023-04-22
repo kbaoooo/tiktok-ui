@@ -2,9 +2,6 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faXmarkCircle,
-    faSpinner,
-    faMagnifyingGlass,
     faEllipsisVertical,
     faGlobe,
     faCircleQuestion,
@@ -15,19 +12,16 @@ import {
     faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
-import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
-import { useEffect, useState } from 'react';
 
 // src
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import { Wrapper as PopperWrapper } from '~/Popper';
-import AccountItem from '~/AccountItem';
 import Button from '~/Button';
 import Menu from '~/Popper/Menu';
 import { MessageIcon, UploadIcon } from '~/Icons';
-import Image from '~/images';
+import Image from '~/Image';
+import Search from '../../Search';
 
 const cx = classNames.bind(styles);
 
@@ -62,14 +56,6 @@ function Header() {
     ];
 
     const currentUser = true;   
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([]);
-        }, 5000);
-    });
-
-    const [SearchResult, setSearchResult] = useState([]);
 
     // handle logic
     const handleMenuChange = (menuItem) => {
@@ -106,40 +92,12 @@ function Header() {
             <div className={cx('inner')}>
                 <img src={images.logo} alt="logo" />
 
-                <HeadlessTippy
-                    interactive
-                    // visible={SearchResult.length > 0}
-                    render={(attrs) => {
-                        return (
-                            <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                                <PopperWrapper>
-                                    <h4 className={cx('search-label')}>Accounts</h4>
-                                    <AccountItem />
-                                    <AccountItem />
-                                    <AccountItem />
-                                    <AccountItem />
-                                </PopperWrapper>
-                            </div>
-                        );
-                    }}
-                >
-                    <div className={cx('search')}>
-                        <input type="text" name="input" placeholder="Search account and videos" spellCheck={false} />
-                        <button type="button" className={cx('clear-btn')}>
-                            <FontAwesomeIcon icon={faXmarkCircle} />
-                        </button>
-                        <FontAwesomeIcon icon={faSpinner} className={cx('loading')} />
-                        <button type="button" className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </HeadlessTippy>
+                <Search />
 
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
                             <Tippy 
-                                delay={[0, 200]}
                                 content='Upload Video'
                                 placement='bottom'
                             >
@@ -149,7 +107,6 @@ function Header() {
                             </Tippy>
 
                             <Tippy 
-                                delay={[0, 200]}
                                 content='Message'
                                 placement='bottom'
                             >
@@ -166,12 +123,14 @@ function Header() {
                     )}
                     <Menu items={MENU_ITEMS ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <Image
-                                src="https://b.fssta.com/uploads/application/soccer/headshots/713.vresize.350.350.medium.34.png"
-                                alt=""
-                                className={cx('user-avatar')}
-                                fallBack
-                            />
+                            <div className={cx('wrapper-menu')} >
+                                <Image
+                                    src="https://b.fssta.com/uploads/application/soccer/headshots/713.vresize.350.350.medium.34.png"
+                                    alt="neymar"
+                                    className={cx('user-avatar')}
+                                    fallback='https://qph.fs.quoracdn.net/main-qimg-6d72b77c81c9841bd98fc806d702e859'
+                                />
+                            </div>
                         ) : (
                             <button className={cx('more-btn')}>
                                 <FontAwesomeIcon icon={faEllipsisVertical} />

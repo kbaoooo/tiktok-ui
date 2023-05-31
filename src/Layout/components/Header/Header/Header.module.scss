@@ -20,6 +20,10 @@
     width: var(--header-width-content, 1150px);
 }
 
+.logo-link {
+    display: flex;
+}
+
 // Actions
 .actions {
     display: flex;

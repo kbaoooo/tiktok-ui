@@ -13,6 +13,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { Link } from 'react-router-dom';
 
 // src
 import styles from './Header.module.scss';
@@ -22,6 +23,7 @@ import Menu from '~/Popper/Menu';
 import { MessageIcon, UploadIcon } from '~/Icons';
 import Image from '~/Image';
 import Search from '../../Search';
+import routesConfig from '~/config/routesConfig';
 
 const cx = classNames.bind(styles);
 
@@ -55,7 +57,7 @@ function Header() {
         },
     ];
 
-    const currentUser = true;   
+    const currentUser = true;
 
     // handle logic
     const handleMenuChange = (menuItem) => {
@@ -85,33 +87,29 @@ function Header() {
             to: '/logout',
             separate: true,
         },
-    ]
+    ];
 
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo} alt="logo" />
+                <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <img src={images.logo} alt="logo" />
+                </Link>
 
                 <Search />
 
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
-                            <Tippy 
-                                content='Upload Video'
-                                placement='bottom'
-                            >
+                            <Tippy content="Upload Video" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <UploadIcon/>
+                                    <UploadIcon />
                                 </button>
                             </Tippy>
 
-                            <Tippy 
-                                content='Message'
-                                placement='bottom'
-                            >
+                            <Tippy content="Message" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <MessageIcon/>
+                                    <MessageIcon />
                                 </button>
                             </Tippy>
                         </>
@@ -121,14 +119,14 @@ function Header() {
                             <Button primary>Log in</Button>
                         </>
                     )}
-                    <Menu items={MENU_ITEMS ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
+                    <Menu items={MENU_ITEMS ? userMenu : MENU_ITEMS} onChange={handleMenuChange} hideOnClick={false}>
                         {currentUser ? (
-                            <div className={cx('wrapper-menu')} >
+                            <div className={cx('wrapper-menu')}>
                                 <Image
                                     src="https://b.fssta.com/uploads/application/soccer/headshots/713.vresize.350.350.medium.34.png"
                                     alt="neymar"
                                     className={cx('user-avatar')}
-                                    fallback='https://qph.fs.quoracdn.net/main-qimg-6d72b77c81c9841bd98fc806d702e859'
+                                    fallback="https://qph.fs.quoracdn.net/main-qimg-6d72b77c81c9841bd98fc806d702e859"
                                 />
                             </div>
                         ) : (

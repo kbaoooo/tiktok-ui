@@ -1,5 +1,5 @@
 //Layouts
-import { HeaderOnly } from '~/Layout';
+import { HeaderOnly } from '~/layouts';
 
 //pages
 import Home from '~/pages/Home';
@@ -7,29 +7,34 @@ import Following from '~/pages/Following';
 import Profile from '~/pages/Profile';
 import Upload from '~/pages/Upload';
 import Search from '~/pages/Search';
+import Live from '~/pages/Live';
 
-import routesConfig from '~/config/routesConfig';
+import config from '~/config';
 
 const publicRoutes = [
     {
-        path: routesConfig.home,
+        path: config.routesConfig.home,
         component: Home,
     },
     {
-        path: routesConfig.following,
+        path: config.routesConfig.following,
         component: Following,
     },
     {
-        path: routesConfig.nickname,
+        path: config.routesConfig.nickname,
         component: Profile,
     },
     {
-        path: routesConfig.upload,
+        path: config.routesConfig.upload,
         component: Upload,
         layout: HeaderOnly,
     },
     {
-        path: routesConfig.search,
+        path: config.routesConfig.live,
+        component: Live,
+    },
+    {
+        path: config.routesConfig.search,
         component: Search,
         layout: null,
     },

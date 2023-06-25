@@ -1,0 +1,67 @@
+.wrapper {
+    border-top: 1px solid #e3e3e4;
+    padding: 8px;
+    margin-top: 10px;
+}
+
+.label {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: rgba(22, 24, 35, 0.75);
+    padding: 6px 0;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    padding-left: 0;
+    transition: background-color ease-in-out 200ms;
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.item-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.item-info {
+    margin-left: 12px;
+    position: relative;
+}
+
+.nickname {
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #161823;
+}
+
+.checkIcon {
+    font-size: 1.4rem;
+    color: #20d5ec;
+    position: absolute;
+    right: -18px;
+    top: -3px;
+}
+
+.name {
+    font-size: 1.2rem;
+    color: #161823bf;
+    line-height: 1;
+}
+
+.see-all-btn {
+    color: var(--primary);
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: inline;
+    font-weight: 700;
+    &:hover {
+        text-decoration: underline;
+    }
+}
